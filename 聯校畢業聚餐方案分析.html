@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聯校畢業聚餐方案分析簡報</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f1f5f9;
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        .tab-button.active {
+            border-color: #3b82f6;
+            color: #3b82f6;
+            background-color: #eff6ff;
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .price-tag {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+        .summary-table th, .summary-table td {
+            vertical-align: top;
+            padding: 1rem 1.5rem;
+        }
+        .summary-table th {
+            background-color: #f8fafc;
+        }
+        .menu-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        .menu-category {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #93c5fd;
+        }
+        .thumbnail-img {
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+        .thumbnail-img:hover {
+            opacity: 0.8;
+        }
+        .price-comparison-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.25rem;
+        }
+    </style>
+</head>
+<body class="bg-slate-100">
+
+    <div class="container mx-auto p-4 md:p-8">
+        <!-- Header -->
+        <header class="text-center mb-8 md:mb-12">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-800">聯校畢業聚餐方案分析簡報</h1>
+            <p class="text-slate-500 mt-2">為 2026 年 5-6 月 聖若瑟教區中學(一至六校) 畢業晚宴 (預計 480 人) 提供方案比較</p>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Venues Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <!-- Venue 1: Macau Tower -->
+                <div class="card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <h2 class="text-2xl font-bold text-slate-800 mb-4">方案一：澳門旅遊塔會展娛樂中心</h2>
+                        <div class="grid grid-cols-3 gap-2 mb-4">
+                            <img src="https://i.imgur.com/7MNhhH9.jpeg" alt="澳門旅遊塔場地圖片1" class="thumbnail-img rounded-lg object-cover w-full h-24" onclick="openImageModal('https://i.imgur.com/7MNhhH9.jpeg')">
+                            <img src="https://i.imgur.com/OcifbRU.jpeg" alt="澳門旅遊塔場地圖片2" class="thumbnail-img rounded-lg object-cover w-full h-24" onclick="openImageModal('https://i.imgur.com/OcifbRU.jpeg')">
+                            <img src="https://i.imgur.com/1gZS9va.jpeg" alt="澳門旅遊塔場地平面圖" class="thumbnail-img rounded-lg object-cover w-full h-24 border" onclick="openImageModal('https://i.imgur.com/1gZS9va.jpeg')">
+                        </div>
+                        <div id="macau-tower-tabs" class="mb-4 border-b border-gray-200">
+                            <nav class="flex space-x-4" aria-label="Tabs">
+                                <button onclick="showTab('macau-tower', 'buffet')" class="tab-button active font-medium text-gray-500 hover:text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">自助餐 (Buffet)</button>
+                                <button onclick="showTab('macau-tower', 'chinese')" class="tab-button font-medium text-gray-500 hover:text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">中式圍餐</button>
+                            </nav>
+                        </div>
+                        <div id="macau-tower-content">
+                            <!-- Buffet Content -->
+                            <div id="macau-tower-buffet">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                    <div class="border rounded-lg p-4 bg-slate-50">
+                                        <h4 class="font-bold text-lg text-blue-800">自助餐 A</h4>
+                                        <p class="price-tag inline-block text-sm font-semibold mr-2 px-2.5 py-0.5 rounded-full mb-2">MOP 399 /位</p>
+                                        <button onclick="openModal('tower-buffet-a')" class="mt-2 text-sm text-blue-600 hover:text-blue-800 font-semibold">查看菜單 &rarr;</button>
+                                    </div>
+                                    <div class="border rounded-lg p-4 bg-slate-50">
+                                        <h4 class="font-bold text-lg text-blue-800">自助餐 B</h4>
+                                        <p class="price-tag inline-block text-sm font-semibold mr-2 px-2.5 py-0.5 rounded-full mb-2">MOP 499 /位</p>
+                                        <button onclick="openModal('tower-buffet-b')" class="mt-2 text-sm text-blue-600 hover:text-blue-800 font-semibold">查看菜單 &rarr;</button>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-blue-50 rounded-lg">
+                                    <h5 class="font-bold text-blue-900 mb-2">主要優惠 (滿100位)：</h5>
+                                    <ul class="list-disc list-inside text-blue-800 space-y-1 text-sm">
+                                        <li>3小時無限暢飲汽水</li>
+                                        <li>免開瓶費</li>
+                                        <li>贈送 MOP 500 餐飲現金券</li>
+                                        <li>贈送3張 AJ Hackett Skywalk 及觀光層門票</li>
+                                        <li>學生享 Skywalk 5折優惠</li>
+                                        <li><span class="font-bold text-red-600">早鳥優惠:</span> 2025年7月31日前簽約及付款可豁免10%服務費</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Chinese Menu Content -->
+                            <div id="macau-tower-chinese" style="display: none;">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                    <div class="border rounded-lg p-3 bg-slate-50"><h4 class="font-bold text-blue-800">謝師宴 A: <span class="font-normal">MOP 3,888/席</span></h4><button onclick="openModal('tower-chinese-a')" class="text-sm text-blue-600 hover:text-blue-800 font-semibold">查看菜單 &rarr;</button></div>
+                                    <div class="border rounded-lg p-3 bg-slate-50"><h4 class="font-bold text-blue-800">謝師宴 B: <span class="font-normal">MOP 4,988/席</span></h4><button onclick="openModal('tower-chinese-b')" class="text-sm text-blue-600 hover:text-blue-800 font-semibold">查看菜單 &rarr;</button></div>
+                                    <div class="border rounded-lg p-3 bg-slate-50"><h4 class="font-bold text-blue-800">團體宴席 A: <span class="font-normal">MOP 5,088/席</span></h4><button onclick="openModal('tower-chinese-c')" class="text-sm text-blue-600 hover:text-blue-800 font-semibold">查看菜單 &rarr;</button></div>
+                                    <div class="border rounded-lg p-3 bg-slate-50"><h4 class="font-bold text-blue-800">團體宴席 B: <span class="font-normal">MOP 6,088/席</span></h4><button onclick="openModal('tower-chinese-d')" class="text-sm text-blue-600 hover:text-blue-800 font-semibold">查看菜單 &rarr;</button></div>
+                                    <div class="border rounded-lg p-3 bg-slate-50"><h4 class="font-bold text-blue-800">團體宴席 C: <span class="font-normal">MOP 7,288/席</span></h4><button onclick="openModal('tower-chinese-e')" class="text-sm text-blue-600 hover:text-blue-800 font-semibold">查看菜單 &rarr;</button></div>
+                                </div>
+                                <div class="p-4 bg-blue-50 rounded-lg">
+                                    <h5 class="font-bold text-blue-900 mb-2">中式圍餐主要優惠：</h5>
+                                    <ul class="list-disc list-inside text-blue-800 space-y-2 text-sm">
+                                        <li>
+                                            <span class="font-semibold">謝師宴 (滿10席):</span>
+                                            <ul class="list-disc list-inside ml-4 mt-1">
+                                                <li>3小時無限暢飲汽水</li>
+                                                <li>免開瓶費</li>
+                                                <li>贈送 MOP 500 餐飲現金券</li>
+                                                <li>贈送3張 AJ Hackett Skywalk 及觀光層門票</li>
+                                                <li>學生享 Skywalk 5折優惠</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <span class="font-semibold">團體宴席 (滿15席):</span>
+                                            <ul class="list-disc list-inside ml-4 mt-1">
+                                                <li>精美檯布及椅套、席上花卉佈置</li>
+                                                <li>每席12罐飲品、每席1瓶紅酒</li>
+                                                <li>免1瓶開瓶費</li>
+                                                <li>免費麻雀耍樂、投影設備、泊車券</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <span class="font-semibold text-red-600">通用優惠:</span>
+                                            <ul class="list-disc list-inside ml-4 mt-1 text-red-700">
+                                                <li><span class="font-bold">早鳥優惠:</span> 2025年7月31日前簽約及付款可豁免10%服務費</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Venue 2: Macau Fisherman's Wharf -->
+                <div class="card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <h2 class="text-2xl font-bold text-slate-800 mb-4">方案二：澳門漁人碼頭會議展覽中心</h2>
+                        <img src="https://www.fishermanswharf.com.mo/wp-content/uploads/2022/10/CEC-3-1200x800-2-1024x683.jpg" alt="澳門漁人碼頭場地示意圖" class="thumbnail-img rounded-lg object-cover w-full h-36 mb-4 bg-slate-200" onclick="openImageModal('https://www.fishermanswharf.com.mo/wp-content/uploads/2022/10/CEC-3-1200x800-2-1024x683.jpg')">
+                        <div id="fishermans-wharf-tabs" class="mb-4 border-b border-gray-200">
+                            <nav class="flex space-x-4" aria-label="Tabs">
+                                <button onclick="showTab('fishermans-wharf', 'buffet')" class="tab-button active font-medium text-gray-500 hover:text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">自助餐 (Buffet)</button>
+                                <button onclick="showTab('fishermans-wharf', 'chinese')" class="tab-button font-medium text-gray-500 hover:text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">中式圍餐</button>
+                            </nav>
+                        </div>
+                        <div id="fishermans-wharf-content">
+                            <!-- Buffet Content -->
+                            <div id="fishermans-wharf-buffet">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                    <div class="border rounded-lg p-4 bg-slate-50">
+                                        <h4 class="font-bold text-lg text-blue-800">自助餐 A</h4>
+                                        <p class="price-tag inline-block text-sm font-semibold mr-2 px-2.5 py-0.5 rounded-full mb-2">MOP 388 /位 (實價)</p>
+                                        <button onclick="openModal('wharf-buffet-a')" class="mt-2 text-sm text-blue-600 hover:text-blue-800 font-semibold">查看菜單 &rarr;</button>
+                                    </div>
+                                    <div class="border rounded-lg p-4 bg-slate-50">
+                                        <h4 class="font-bold text-lg text-blue-800">自助餐 B</h4>
+                                        <p class="price-tag inline-block text-sm font-semibold mr-2 px-2.5 py-0.5 rounded-full mb-2">MOP 438 /位 (實價)</p>
+                                        <button onclick="openModal('wharf-buffet-b')" class="mt-2 text-sm text-blue-600 hover:text-blue-800 font-semibold">查看菜單 &rarr;</button>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-blue-50 rounded-lg">
+                                    <h5 class="font-bold text-blue-900 mb-2">主要優惠：</h5>
+                                    <ul class="list-disc list-inside text-blue-800 space-y-1 text-sm">
+                                        <li>每人奉送汽水一罐</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Chinese Menu Content -->
+                            <div id="fishermans-wharf-chinese" style="display: none;">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                    <div class="border rounded-lg p-3 bg-slate-50"><h4 class="font-bold text-blue-800">社團宴席 A: <span class="font-normal">MOP 4,888/席</span></h4><button onclick="openModal('wharf-chinese-a')" class="text-sm text-blue-600 hover:text-blue-800 font-semibold">查看菜單 &rarr;</button></div>
+                                    <div class="border rounded-lg p-3 bg-slate-50"><h4 class="font-bold text-blue-800">社團宴席 B: <span class="font-normal">MOP 5,888/席</span></h4><button onclick="openModal('wharf-chinese-b')" class="text-sm text-blue-600 hover:text-blue-800 font-semibold">查看菜單 &rarr;</button></div>
+                                    <div class="border rounded-lg p-3 bg-slate-50"><h4 class="font-bold text-blue-800">社團宴席 C: <span class="font-normal">MOP 7,288/席</span></h4><button onclick="openModal('wharf-chinese-c')" class="text-sm text-blue-600 hover:text-blue-800 font-semibold">查看菜單 &rarr;</button></div>
+                                    <div class="border rounded-lg p-3 bg-slate-50"><h4 class="font-bold text-blue-800">社團宴席 D: <span class="font-normal">MOP 8,388/席</span></h4><button onclick="openModal('wharf-chinese-d')" class="text-sm text-blue-600 hover:text-blue-800 font-semibold">查看菜單 &rarr;</button></div>
+                                </div>
+                                <div class="p-4 bg-blue-50 rounded-lg">
+                                    <h5 class="font-bold text-blue-900 mb-2">主要優惠：</h5>
+                                    <ul class="list-disc list-inside text-blue-800 space-y-1 text-sm">
+                                        <li>每席包括汽水或啤酒共十二罐</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary and Recommendation Section -->
+            <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">方案總結與建議</h2>
+                <div class="overflow-x-auto mb-6">
+                    <table class="w-full text-sm text-left text-slate-500 summary-table">
+                        <thead class="text-xs text-slate-700 uppercase">
+                            <tr>
+                                <th scope="col" class="rounded-tl-lg">比較項目</th>
+                                <th scope="col">澳門旅遊塔</th>
+                                <th scope="col" class="rounded-tr-lg">澳門漁人碼頭</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b">
+                                <th scope="row">場地氛圍</th>
+                                <td>標誌性建築，景觀開揚，現代感強，較為高級</td>
+                                <td>主題公園式建築，富特色，氛圍較輕鬆</td>
+                            </tr>
+                            <tr class="bg-slate-50 border-b">
+                                <th scope="row">總價 (不含服務費)</th>
+                                <td colspan="2">
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <p class="font-semibold text-blue-800">澳門旅遊塔</p>
+                                            <div class="price-comparison-item"><span>自助餐 A:</span><span>MOP 191,520</span></div>
+                                            <div class="price-comparison-item"><span>自助餐 B:</span><span>MOP 239,520</span></div>
+                                            <div class="price-comparison-item"><span>謝師宴 A:</span><span>MOP 155,520 (人均 MOP 324)</span></div>
+                                            <div class="price-comparison-item"><span>謝師宴 B:</span><span>MOP 199,520 (人均 MOP 415.7)</span></div>
+                                            <div class="price-comparison-item"><span>團體宴席 A:</span><span>MOP 203,520 (人均 MOP 424)</span></div>
+                                            <div class="price-comparison-item"><span>團體宴席 B:</span><span>MOP 243,520 (人均 MOP 507.3)</span></div>
+                                            <div class="price-comparison-item"><span>團體宴席 C:</span><span>MOP 291,520 (人均 MOP 607.3)</span></div>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-blue-800">澳門漁人碼頭</p>
+                                            <div class="price-comparison-item"><span>自助餐 A:</span><span>MOP 186,240</span></div>
+                                            <div class="price-comparison-item"><span>自助餐 B:</span><span>MOP 210,240</span></div>
+                                            <div class="price-comparison-item"><span>社團宴席 A:</span><span>MOP 195,520 (人均 MOP 407.3)</span></div>
+                                            <div class="price-comparison-item"><span>社團宴席 B:</span><span>MOP 235,520 (人均 MOP 490.7)</span></div>
+                                            <div class="price-comparison-item"><span>社團宴席 C:</span><span>MOP 291,520 (人均 MOP 607.3)</span></div>
+                                            <div class="price-comparison-item"><span>社團宴席 D:</span><span>MOP 335,520 (人均 MOP 699)</span></div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                             <tr class="bg-white border-b">
+                                <th scope="row">總價 (含服務費)</th>
+                                <td colspan="2">
+                                     <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <p class="font-semibold text-blue-800">澳門旅遊塔</p>
+                                            <div class="price-comparison-item"><span>自助餐 A:</span><span>MOP 210,672</span></div>
+                                            <div class="price-comparison-item"><span>自助餐 B:</span><span>MOP 263,472</span></div>
+                                            <div class="price-comparison-item"><span>謝師宴 A:</span><span>MOP 171,072 (人均 MOP 356.4)</span></div>
+                                            <div class="price-comparison-item"><span>謝師宴 B:</span><span>MOP 219,472 (人均 MOP 457.2)</span></div>
+                                            <div class="price-comparison-item"><span>團體宴席 A:</span><span>MOP 223,872 (人均 MOP 466.4)</span></div>
+                                            <div class="price-comparison-item"><span>團體宴席 B:</span><span>MOP 267,872 (人均 MOP 558.1)</span></div>
+                                            <div class="price-comparison-item"><span>團體宴席 C:</span><span>MOP 320,672 (人均 MOP 668.1)</span></div>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-blue-800">澳門漁人碼頭</p>
+                                            <div class="price-comparison-item"><span>自助餐 A:</span><span>MOP 186,240</span></div>
+                                            <div class="price-comparison-item"><span>自助餐 B:</span><span>MOP 210,240</span></div>
+                                            <div class="price-comparison-item"><span>社團宴席 A:</span><span>MOP 215,072 (人均 MOP 448.1)</span></div>
+                                            <div class="price-comparison-item"><span>社團宴席 B:</span><span>MOP 259,072 (人均 MOP 539.7)</span></div>
+                                            <div class="price-comparison-item"><span>社團宴席 C:</span><span>MOP 320,672 (人均 MOP 668.1)</span></div>
+                                            <div class="price-comparison-item"><span>社團宴席 D:</span><span>MOP 369,072 (人均 MOP 768.9)</span></div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="bg-slate-50">
+                                <th scope="row">核心優惠</th>
+                                <td>飲品暢飲/定量、免開瓶費、現金券、門票、<span class="font-bold text-red-600">早鳥免服務費</span></td>
+                                <td>每人/每席定量飲品，自助餐價格為實價</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-slate-50 p-4 rounded-lg">
+                        <h4 class="font-bold text-lg text-slate-700 mb-2">分析與建議</h4>
+                        <ul class="space-y-4 text-slate-600">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01"></path></svg>
+                                <div><strong class="text-slate-800">成本效益：</strong><span class="font-bold text-green-700">漁人碼頭</span>的自助餐方案總價較低且為實價，預算控制更明確。而<span class="font-bold text-green-700">旅遊塔</span>的中式圍餐在價格上則更具競爭力，特別是考慮到早鳥優惠。</div>
+                            </li>
+                             <li class="flex items-start">
+                                <svg class="w-5 h-5 text-blue-500 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-14l-3 3m5 5l3-3m-8 8l-3 3m5 5l3-3M5 3a2 2 0 00-2 2v1h4V5a2 2 0 00-2-2zm0 16a2 2 0 002-2v-1H3v1a2 2 0 002 2zm14-16a2 2 0 00-2-2v1h4V5a2 2 0 00-2-2zm0 16a2 2 0 002-2v-1h-4v1a2 2 0 002 2z"></path></svg>
+                                <div><strong class="text-slate-800">附加價值與體驗：</strong><span class="font-bold text-blue-700">澳門旅遊塔</span>提供更豐富的附加優惠，如無限暢飲、免開瓶費及門票等，整體體驗更完整和高級，適合畢業晚宴此類重要場合。</div>
+                            </li>
+                             <li class="flex items-start">
+                                <svg class="w-5 h-5 text-amber-500 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-i-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <div><strong class="text-slate-800">決策建議：</strong>
+                                    <ul class="list-inside list-disc mt-1">
+                                        <li>若<span class="font-bold">預算為首要考量</span>，且偏好自助餐形式，可優先考慮<span class="font-bold">漁人碼頭</span>。</li>
+                                        <li>若<span class="font-bold">追求更佳的活動體驗和附加價值</span>，並希望給師生留下深刻印象，<span class="font-bold">澳門旅遊塔</span>是更優選擇，特別是其中式圍餐方案，性價比極高（若能爭取到早鳥優惠）。</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg flex flex-col items-center justify-center">
+                        <h4 class="font-bold text-lg text-slate-700 mb-2">建議採納</h4>
+                        <div class="text-center p-4 border-2 border-dashed border-blue-300 rounded-lg bg-white">
+                            <p class="text-slate-800 font-bold text-xl">澳門旅遊塔</p>
+                            <p class="text-slate-600 mt-1">綜合考慮場地質素、景觀、附加優惠及性價比，旅遊塔的方案（特別是圍餐）整體上更符合畢業晚宴的隆重性和紀念價值。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Menu Modal Container -->
+    <div id="menuModal" class="hidden fixed inset-0 bg-black bg-opacity-60 z-50 flex justify-center items-center p-4 transition-opacity duration-300" onclick="closeModal()">
+        <div class="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
+            <div class="p-4 border-b flex justify-between items-center sticky top-0 bg-white rounded-t-xl">
+                <h3 id="modalTitle" class="text-xl font-bold text-slate-800">菜單詳情</h3>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-800 text-3xl font-light">&times;</button>
+            </div>
+            <div id="modalBody" class="p-6 overflow-y-auto text-slate-600">
+                <!-- Menu content will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal Container -->
+    <div id="imageModal" class="hidden fixed inset-0 bg-black bg-opacity-80 z-50 flex justify-center items-center p-4 transition-opacity duration-300" onclick="closeImageModal()">
+        <div class="relative max-w-4xl max-h-[90vh]" onclick="event.stopPropagation()">
+            <img id="modalImage" src="" alt="放大的場地圖片" class="object-contain max-w-full max-h-full rounded-lg shadow-2xl">
+            <button onclick="closeImageModal()" class="absolute -top-2 -right-2 text-white bg-black bg-opacity-50 rounded-full w-10 h-10 text-2xl flex items-center justify-center hover:bg-opacity-75 transition-colors">&times;</button>
+        </div>
+    </div>
+
+    <script>
+        const menuData = {
+            'tower-buffet-a': {
+                title: '澳門旅遊塔 - 自助餐 A',
+                content: `
+                    <h4 class="menu-category">各式冷盆</h4>
+                    <div class="menu-item"><span>黑醋木耳青瓜沙律</span><span>Cucumber salad with black fungus</span></div>
+                    <div class="menu-item"><span>藜麥沙律配甜薯及蘋果</span><span>Quinoa salad with sweet potatoes and apples</span></div>
+                    <div class="menu-item"><span>吞拿魚沙律配醃青豆及車厘茄</span><span>Chunky tuna salad</span></div>
+                    <div class="menu-item"><span>利馬豆配蕃茜、蕃茄及葡腸</span><span>Butter beans with parsley, tomatoes and chorizo</span></div>
+                    <div class="menu-item"><span>牛肉米粉沙律配薑汁豉油</span><span>Beef and rice noodle salad</span></div>
+                    <div class="menu-item"><span>泰式醃雞腳</span><span>Chicken feet salad with chili and coriander</span></div>
+                    <div class="menu-item"><span>日式馬鈴薯沙律</span><span>Potato salad with wasabi soy dressing</span></div>
+                    <div class="menu-item"><span>什錦壽司卷</span><span>Assorted maki rolls</span></div>
+                    <div class="menu-item"><span>刺身: 鮮三文魚, 希靈魚</span><span>Sashimi: Fresh salmon, Japanese herring</span></div>
+                    <h4 class="menu-category">熱盆</h4>
+                    <div class="menu-item"><span>葡式豬肉卷</span><span>Portuguese pork roll</span></div>
+                    <div class="menu-item"><span>香檸牛油龍脷柳配蘆筍</span><span>Sole fillet poached in lemon butter</span></div>
+                    <div class="menu-item"><span>甜薯香茅忌廉野米釀雞卷</span><span>Chicken roll with wild rice stuffing</span></div>
+                    <div class="menu-item"><span>金湯酸辣肥牛</span><span>Sour and spicy beef sliced</span></div>
+                    <div class="menu-item"><span>肉醬意粉</span><span>Bolognese spaghetti</span></div>
+                    <div class="menu-item"><span>燒肉汁蒜片牛柳粒蘆筍炒飯</span><span>Fried rice with asparagus, diced beef</span></div>
+                    <h4 class="menu-category">切肉檔</h4>
+                    <div class="menu-item"><span>香草燒西冷</span><span>Roasted beef sirloin with and herbs</span></div>
+                    <h4 class="menu-category">甜品</h4>
+                    <div class="menu-item"><span>芒果布甸</span><span>Mango pudding</span></div>
+                    <div class="menu-item"><span>羅勒草莓慕士蛋糕</span><span>Strawberry mousse cake with basil</span></div>
+                    <div class="menu-item"><span>巴斯克芝士餅</span><span>Basque cheesecake</span></div>
+                    <div class="menu-item"><span>陳皮紅豆沙</span><span>Sweetened red bean broth</span></div>
+                    <div class="menu-item"><span>雪糕伴配料</span><span>Ice cream station</span></div>
+                `
+            },
+            'tower-buffet-b': {
+                title: '澳門旅遊塔 - 自助餐 B',
+                content: `
+                    <h4 class="menu-category">各式冷盆</h4>
+                    <div class="menu-item"><span>燒雞沙律配蘋果、西芹</span><span>Roast chicken salad with apples, celery</span></div>
+                    <div class="menu-item"><span>低溫烤椰菜花沙律配藜麥</span><span>Warm roasted cauliflower salad</span></div>
+                    <div class="menu-item"><span>萵筍絲海蜇沙律</span><span>Jellyfish with shredded asparagus lettuce</span></div>
+                    <div class="menu-item"><span>泰式牛肉沙律</span><span>Thai beef salad</span></div>
+                    <div class="menu-item"><span>什錦壽司及壽司卷</span><span>Assorted sushi and maki rolls</span></div>
+                    <div class="menu-item"><span>刺身: 鮮三文魚, 希靈魚, 八爪魚</span><span>Sashimi: Salmon, herring and octopus</span></div>
+                    <h4 class="menu-category">熱盆</h4>
+                    <div class="menu-item"><span>法國椰菜煙肉芥末忌廉雞卷</span><span>Chicken roll with savoy cabbage</span></div>
+                    <div class="menu-item"><span>蓮度豆青水欖燴鴨腿</span><span>Duck leg stew with lentils</span></div>
+                    <div class="menu-item"><span>紅酒燴牛尾</span><span>Stewed ox-tail with red wine</span></div>
+                    <div class="menu-item"><span>意式豬柳卷配蒜香甜豆</span><span>Pork saltimbocca</span></div>
+                    <div class="menu-item"><span>漁莊海鮮燒鴨粒炒飯</span><span>Fried rice with seafood and diced BBQ duck</span></div>
+                    <h4 class="menu-category">切肉檔</h4>
+                    <div class="menu-item"><span>威靈頓牛柳</span><span>Wellington beef tenderloin</span></div>
+                    <h4 class="menu-category">甜品</h4>
+                    <div class="menu-item"><span>葡撻</span><span>Portuguese egg tarts</span></div>
+                    <div class="menu-item"><span>泰式珍珠果凍</span><span>Thai milk tea jelly with sago</span></div>
+                    <div class="menu-item"><span>木瓜燉雪耳</span><span>Double boiled papaya broth</span></div>
+                    <div class="menu-item"><span>朱古力噴泉配棉花糖及鮮果</span><span>Chocolate fountain</span></div>
+                `
+            },
+            'tower-chinese-a': {
+                title: '澳門旅遊塔 - 謝師宴套餐 A (MOP 3,888)',
+                content: `
+                    <div class="menu-item"><span>才高八斗潮粤燒味大拼盤</span><span>Assorted appetizer platter</span></div>
+                    <div class="menu-item"><span>碧綠鮮蝦球鴨甫</span><span>Sautéed prawns and duck breast</span></div>
+                    <div class="menu-item"><span>虎茸菌響螺桃膠燉走地雞湯</span><span>Double-boiled chicken soup</span></div>
+                    <div class="menu-item"><span>蠔皇花蹄膠厚花菇翠蔬</span><span>Braised pork tendon and mushrooms</span></div>
+                    <div class="menu-item"><span>蔥油蒸沙巴珍珠大龍躉</span><span>Steamed Sabah pearl giant grouper</span></div>
+                    <div class="menu-item"><span>脆皮一品龍岡雞</span><span>Crispy roasted chicken</span></div>
+                    <div class="menu-item"><span>福語燴香苗</span><span>Braised rice with shrimp</span></div>
+                    <div class="menu-item"><span>高山菌炆伊麵</span><span>Braised E-fu noodles</span></div>
+                    <div class="menu-item"><span>遠年陳皮紅豆沙</span><span>Sweetened red bean broth</span></div>
+                    <div class="menu-item"><span>美點雙輝映</span><span>Chinese petit fours</span></div>
+                    <div class="menu-item"><span>環球時鮮果</span><span>Fresh fruit platter</span></div>
+                `
+            },
+            'tower-chinese-b': {
+                title: '澳門旅遊塔 - 謝師宴套餐 B (MOP 4,988)',
+                content: `
+                    <div class="menu-item"><span>前程錦繡乳豬燒味一品拼盤</span><span>Assorted suckling pig platter</span></div>
+                    <div class="menu-item"><span>翡翠珊瑚蚌水晶蝦球</span><span>Sautéed king prawns and coral clams</span></div>
+                    <div class="menu-item"><span>發財玉環北海道瑤柱甫</span><span>Braised Hokkaido dried scallop</span></div>
+                    <div class="menu-item"><span>鹿茸菌響螺日月魚燉竹絲雞湯</span><span>Double-boiled black chicken soup</span></div>
+                    <div class="menu-item"><span>蠔皇波蘭鵝掌花蹄膠翠蔬</span><span>Braised Polish goose feet</span></div>
+                    <div class="menu-item"><span>葱油蒸沙巴珍珠大龍躉</span><span>Steamed Sabah pearl giant grouper</span></div>
+                    <div class="menu-item"><span>海鹽脆皮龍岡雞</span><span>Crispy roasted chicken with sea salt</span></div>
+                    <div class="menu-item"><span>畔塘飄香荷葉飯</span><span>Steamed rice in lotus leaves</span></div>
+                    <div class="menu-item"><span>甫魚野山菌炆伊麵</span><span>Braised E-fu noodles with dried fish</span></div>
+                    <div class="menu-item"><span>鮮奶珍珠花生露</span><span>Sweetened peanut broth</span></div>
+                    <div class="menu-item"><span>美點雙輝映</span><span>Chinese petit fours</span></div>
+                    <div class="menu-item"><span>環球時鮮果</span><span>Fresh fruit platter</span></div>
+                `
+            },
+            'tower-chinese-c': {
+                title: '澳門旅遊塔 - 團體套餐 A (MOP 5,088)',
+                content: `
+                    <div class="menu-item"><span>五福臨門乳豬燒味拼盤</span><span>Assorted suckling pig appetizer platter</span></div>
+                    <div class="menu-item"><span>碧綠北海道帶子水晶蝦球</span><span>Sautéed Hokkaido scallops and king prawns</span></div>
+                    <div class="menu-item"><span>虎茸菌瑤柱竹笙燉走地雞湯</span><span>Double-boiled chicken soup</span></div>
+                    <div class="menu-item"><span>蠔皇花蹄膠珍珠螺片翠蔬</span><span>Braised pork tendon and pearl mussels</span></div>
+                    <div class="menu-item"><span>葱油蒸沙巴珍珠大龍躉</span><span>Steamed Sabah pearl giant grouper</span></div>
+                    <div class="menu-item"><span>脆皮一品龍岡雞</span><span>Crispy roasted chicken</span></div>
+                    <div class="menu-item"><span>福語燴香苗</span><span>Braised rice with shrimp</span></div>
+                    <div class="menu-item"><span>高山菌炆伊麵</span><span>Braised E-fu noodles with mushrooms</span></div>
+                    <div class="menu-item"><span>遠年陳皮紅豆沙</span><span>Sweetened red bean broth</span></div>
+                    <div class="menu-item"><span>美點雙輝映</span><span>Chinese petit fours</span></div>
+                    <div class="menu-item"><span>環球時鮮果</span><span>Fresh fruit platter</span></div>
+                `
+            },
+            'tower-chinese-d': {
+                title: '澳門旅遊塔 - 團體套餐 B (MOP 6,088)',
+                content: `
+                    <div class="menu-item"><span>桃紅琵琶乳豬全體</span><span>Roasted whole suckling pig</span></div>
+                    <div class="menu-item"><span>碧綠采蝶水晶蝦球</span><span>Sautéed sliced squid and king prawns</span></div>
+                    <div class="menu-item"><span>發財玉環北海道瑤柱甫</span><span>Braised Hokkaido dried scallop</span></div>
+                    <div class="menu-item"><span>水牛芝士香酥帶子卷</span><span>Scallop puff with mozzarella</span></div>
+                    <div class="menu-item"><span>鹿茸菌響螺桃膠燉走地雞湯</span><span>Double-boiled chicken soup</span></div>
+                    <div class="menu-item"><span>蠔皇花膠厚花菇翠蔬</span><span>Braised fish maw and mushrooms</span></div>
+                    <div class="menu-item"><span>葱油蒸沙巴珍珠大龍躉</span><span>Steamed Sabah pearl giant grouper</span></div>
+                    <div class="menu-item"><span>海鹽脆皮龍岡雞</span><span>Crispy roasted chicken with sea salt</span></div>
+                    <div class="menu-item"><span>漁莊紅米海鮮燒豚肉炒香苗</span><span>Seafood fried rice with BBQ pork</span></div>
+                    <div class="menu-item"><span>甫魚野山菌炆伊麵</span><span>Braised E-fu noodles with dried fish</span></div>
+                    <div class="menu-item"><span>桂花杞子馬蹄沙</span><span>Sweetened water chestnut broth</span></div>
+                    <div class="menu-item"><span>美點雙輝映</span><span>Chinese petit fours</span></div>
+                    <div class="menu-item"><span>環球時鮮果</span><span>Fresh fruit platter</span></div>
+                `
+            },
+            'tower-chinese-e': {
+                title: '澳門旅遊塔 - 團體套餐 C (MOP 7,288)',
+                content: `
+                    <div class="menu-item"><span>金玉滿堂琵琶乳豬全體</span><span>Roasted whole suckling pig</span></div>
+                    <div class="menu-item"><span>碧綠日本帶子珊瑚蚌</span><span>Sautéed Japanese scallops and coral clams</span></div>
+                    <div class="menu-item"><span>發財翠環北海道瑤柱甫</span><span>Braised Hokkaido dried scallop</span></div>
+                    <div class="menu-item"><span>巴馬火腿鮮蝦海皇酥</span><span>Seafood puff with shrimp and parma ham</span></div>
+                    <div class="menu-item"><span>姬松茸響螺竹笙燉竹絲雞湯</span><span>Double-boiled black chicken soup</span></div>
+                    <div class="menu-item"><span>蠔皇原隻鮑魚厚花菇翠蔬</span><span>Braised whole abalones and mushrooms</span></div>
+                    <div class="menu-item"><span>葱油蒸沙巴珍珠大龍躉</span><span>Steamed Sabah pearl giant grouper</span></div>
+                    <div class="menu-item"><span>奇妙醬烤龍岡雞</span><span>Crispy roasted chicken with fermented red bean curd</span></div>
+                    <div class="menu-item"><span>畔塘飄香荷葉飯</span><span>Steamed rice with chicken and mushrooms</span></div>
+                    <div class="menu-item"><span>黑木耳海鮮蒸粉果</span><span>Steamed dumplings with seafood</span></div>
+                    <div class="menu-item"><span>珍珠椰汁紫米露</span><span>Sweetened black glutinous rice broth</span></div>
+                    <div class="menu-item"><span>美點雙輝映</span><span>Chinese petit fours</span></div>
+                    <div class="menu-item"><span>環球時鮮果</span><span>Fresh fruit platter</span></div>
+                `
+            },
+            'wharf-buffet-a': {
+                title: '漁人碼頭 - 自助餐 A',
+                content: `
+                    <h4 class="menu-category">海鮮及沙律</h4>
+                    <div class="menu-item"><span>海鮮: 紐西蘭青口, 翡翠螺, 海蝦</span><span>Seafood: Mussel, Whelk, Shrimp</span></div>
+                    <div class="menu-item"><span>刺身: 現切吞拿魚刺身</span><span>Sashimi: Fresh Cut Tuna</span></div>
+                    <div class="menu-item"><span>醃煙三文魚配辣根汁</span><span>Smoked Salmon, Horseradish Cream</span></div>
+                    <div class="menu-item"><span>日式手撕雞沙律</span><span>Chicken Salad with Japanese Sesame Dressings</span></div>
+                    <h4 class="menu-category">熱盆</h4>
+                    <div class="menu-item"><span>明爐燒鴨</span><span>Roast Duck</span></div>
+                    <div class="menu-item"><span>法式紅酒燴牛肉</span><span>French Red Wine Braised Beef</span></div>
+                    <div class="menu-item"><span>炭燒豬頸肉</span><span>Grilled Pork Neck</span></div>
+                    <div class="menu-item"><span>蜜汁菠蘿烤雞</span><span>Honey Pineapple Roasted Chicken</span></div>
+                    <div class="menu-item"><span>芝士焗肉醬通粉</span><span>Bolognaise with Macaroni</span></div>
+                    <h4 class="menu-category">甜品</h4>
+                    <div class="menu-item"><span>椰汁芋頭西米露</span><span>Sago Sweetened Soup</span></div>
+                    <div class="menu-item"><span>黑森林蛋糕</span><span>Black Forest Cake</span></div>
+                    <div class="menu-item"><span>藍莓芝士蛋糕</span><span>Blueberry Cheesecake</span></div>
+                    <div class="menu-item"><span>提拉米蘇</span><span>Tiramisu</span></div>
+                `
+            },
+            'wharf-buffet-b': {
+                title: '漁人碼頭 - 自助餐 B',
+                content: `
+                    <h4 class="menu-category">海鮮及沙律</h4>
+                    <div class="menu-item"><span>海鮮: 紐西蘭青口, 翡翠螺, 海蝦</span><span>Seafood: Mussel, Whelk, Shrimp</span></div>
+                    <div class="menu-item"><span>刺身: 現切三文魚刺身</span><span>Sashimi: Fresh Cut Salmon</span></div>
+                    <div class="menu-item"><span>泰式魷魚沙律</span><span>Thai Style Squid Salad</span></div>
+                    <div class="menu-item"><span>馬鈴薯蟹肉沙律</span><span>Potato and Crab Meat Salad</span></div>
+                    <h4 class="menu-category">切肉檔</h4>
+                     <div class="menu-item"><span>蒜香燒西冷牛肉</span><span>Roasted Sirloin with Garlic</span></div>
+                    <h4 class="menu-category">熱盆</h4>
+                    <div class="menu-item"><span>玫瑰豉油雞</span><span>Soy Chicken with Ginger Dip</span></div>
+                    <div class="menu-item"><span>照燒牛肋骨</span><span>US Beef Short Rib with Teriyaki Sauce</span></div>
+                    <div class="menu-item"><span>菠蘿咕嚕肉</span><span>Sweet and Sour Pork Loin</span></div>
+                    <div class="menu-item"><span>寶雲蘇烤羊脾扒</span><span>Provencale Lamb Chop</span></div>
+                    <div class="menu-item"><span>瑤柱鮑粒鮮蝦荷葉飯</span><span>Lotus Leaf Rice</span></div>
+                    <div class="menu-item"><span>黑松露忌廉蘑菇蝴蝶粉</span><span>Black Truffle Creamy Mushroom with Pasta</span></div>
+                    <h4 class="menu-category">甜品</h4>
+                    <div class="menu-item"><span>楊枝甘露</span><span>Mango Pomelo Sago</span></div>
+                    <div class="menu-item"><span>海鹽焦糖脆脆蛋糕</span><span>Salted Caramel Chunky Cake</span></div>
+                    <div class="menu-item"><span>意大利乳清芝士撻</span><span>Ricotta Cheese Tart</span></div>
+                    <div class="menu-item"><span>雪燕燉蛋</span><span>Crème Brulee with Gum Tragacanth</span></div>
+                `
+            },
+            'wharf-chinese-a': {
+                title: '漁人碼頭 - 社團宴席 A (MOP 4,888)',
+                content: `
+                    <div class="menu-item"><span>四小碟 (芝麻彩虹海蜇, 白雲豬手等)</span><span>4 Appetizers</span></div>
+                    <div class="menu-item"><span>XO醬蜜豆雲耳炒蝦仁</span><span>Sautéed Prawn in XO Sauce</span></div>
+                    <div class="menu-item"><span>黃金麥片百花球</span><span>Golden-fried Cuttlefish Ball</span></div>
+                    <div class="menu-item"><span>姬松茸螺頭燉雞湯</span><span>Doubled-boiled Chicken Soup</span></div>
+                    <div class="menu-item"><span>蔥油蒸珍珠斑</span><span>Steamed Giant Garoupa</span></div>
+                    <div class="menu-item"><span>風沙脆皮雞</span><span>Crispy Chicken with Sea Salt</span></div>
+                    <div class="menu-item"><span>畔塘飄香荷葉飯</span><span>Fried Rice in Lotus Leaf</span></div>
+                    <div class="menu-item"><span>蝦籽珍菌炆伊麵</span><span>Braised E-Fu Noodles</span></div>
+                    <div class="menu-item"><span>百合蓮子紅豆沙</span><span>Sweeten Red Bean Cream</span></div>
+                    <div class="menu-item"><span>美點雙輝映</span><span>Petit Fours</span></div>
+                `
+            },
+            'wharf-chinese-b': {
+                title: '漁人碼頭 - 社團宴席 B (MOP 5,888)',
+                content: `
+                    <div class="menu-item"><span>琵琶乳豬拼海蜇</span><span>Suckling Pig with Jelly Fish</span></div>
+                    <div class="menu-item"><span>XO醬碧綠花枝鳳球</span><span>Sautéed Chicken in XO Sauce</span></div>
+                    <div class="menu-item"><span>沙律雜菜拼大良鮮奶</span><span>Golden-fried Fresh Milk</span></div>
+                    <div class="menu-item"><span>蟲草花螺頭燉老鴿湯</span><span>Doubled-boiled Pigeon Soup</span></div>
+                    <div class="menu-item"><span>蠔皇鮑菇扒螺片</span><span>Braised Sea Whelk Piece</span></div>
+                    <div class="menu-item"><span>蔥油蒸珍珠斑</span><span>Steamed Giant Garoupa</span></div>
+                    <div class="menu-item"><span>一品南乳脆皮雞</span><span>Crispy Chicken with Bean Curd</span></div>
+                    <div class="menu-item"><span>畔塘飄香荷葉飯</span><span>Fried Rice in Lotus Leaf</span></div>
+                    <div class="menu-item"><span>百合蓮子紅豆沙</span><span>Sweeten Red Bean Cream</span></div>
+                    <div class="menu-item"><span>合時鮮果盤</span><span>Seasonal Fresh Fruits</span></div>
+                `
+            },
+            'wharf-chinese-c': {
+                title: '漁人碼頭 - 社團宴席 C (MOP 7,288)',
+                content: `
+                    <div class="menu-item"><span>鴻運琵琶乳豬全體</span><span>Barbecued Whole Suckling Pig</span></div>
+                    <div class="menu-item"><span>XO醬碧綠爆蝦球</span><span>Sautéed Prawn in XO Sauce</span></div>
+                    <div class="menu-item"><span>沙律雜菜拼黃金百花球</span><span>Golden-fried Cuttlefish Ball</span></div>
+                    <div class="menu-item"><span>發財銀環瑤柱脯</span><span>Stuffed Marrow with Conpoy</span></div>
+                    <div class="menu-item"><span>紅燒竹笙海皇魚翅羹</span><span>Braised Shark's Fin Soup</span></div>
+                    <div class="menu-item"><span>碧綠花菇扣魚唇</span><span>Braised Shark's Tail Skin</span></div>
+                    <div class="menu-item"><span>蔥油蒸珍珠斑</span><span>Steamed Giant Garoupa</span></div>
+                    <div class="menu-item"><span>一品茶皇脆皮雞</span><span>Crispy Chicken with Tea Leaf</span></div>
+                    <div class="menu-item"><span>蟹籽海鮮炒米苗</span><span>Fried Rice with Seafood</span></div>
+                    <div class="menu-item"><span>蠔皇野菌炆伊麵</span><span>Braised E-Fu Noodles</span></div>
+                    <div class="menu-item"><span>百合蓮子紅豆沙</span><span>Sweeten Red Bean Cream</span></div>
+                    <div class="menu-item"><span>精美中西美點</span><span>Petit Fours</span></div>
+                    <div class="menu-item"><span>合時鮮果盤</span><span>Seasonal Fresh Fruits</span></div>
+                `
+            },
+            'wharf-chinese-d': {
+                title: '漁人碼頭 - 社團宴席 D (MOP 8,388)',
+                content: `
+                    <div class="menu-item"><span>鴻運琵琶乳豬全體</span><span>Barbecued Whole Suckling Pig</span></div>
+                    <div class="menu-item"><span>碧綠炒桂花蚌大蝦球</span><span>Sautéed Prawn and Cuttlefish</span></div>
+                    <div class="menu-item"><span>荔芋香酥帶子盒</span><span>Golden-fried Taro Puree Scallop</span></div>
+                    <div class="menu-item"><span>富貴蟹肉蟹籽扒西蘭花</span><span>Braised Broccoli with Crab Meat</span></div>
+                    <div class="menu-item"><span>海味紅燒雞絲翅</span><span>Braised Seafood and Chicken Shark's Fin</span></div>
+                    <div class="menu-item"><span>碧綠花菇燴鮑片</span><span>Braised Sliced Abalone</span></div>
+                    <div class="menu-item"><span>蔥油蒸老虎斑</span><span>Steamed Tiger Garoupa</span></div>
+                    <div class="menu-item"><span>風沙海鹽脆皮雞</span><span>Crispy Chicken with Sea Salt</span></div>
+                    <div class="menu-item"><span>蟹籽瑤柱海鮮炒飯</span><span>Fried Rice with Seafood</span></div>
+                    <div class="menu-item"><span>紅豆沙芝麻湯丸</span><span>Sweeten Red Bean Cream</span></div>
+                    <div class="menu-item"><span>美點雙輝映</span><span>Petit Fours</span></div>
+                    <div class="menu-item"><span>合時鮮果盤</span><span>Seasonal Fresh Fruits</span></div>
+                `
+            }
+        };
+
+        function showTab(venue, tabName) {
+            document.getElementById(venue + '-buffet').style.display = 'none';
+            document.getElementById(venue + '-chinese').style.display = 'none';
+            const buttons = document.querySelectorAll('#' + venue + '-tabs .tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+            document.getElementById(venue + '-' + tabName).style.display = 'block';
+            const activeButton = document.querySelector('#' + venue + '-tabs button[onclick*="' + tabName + '"]');
+            activeButton.classList.add('active');
+        }
+
+        function openModal(menuId) {
+            const menu = menuData[menuId];
+            if (!menu) return;
+
+            document.getElementById('modalTitle').innerText = menu.title;
+            document.getElementById('modalBody').innerHTML = menu.content;
+            document.getElementById('menuModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('menuModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openImageModal(src) {
+            document.getElementById('modalImage').src = src;
+            document.getElementById('imageModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+
+</body>
+</html>
